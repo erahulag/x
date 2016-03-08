@@ -1,0 +1,27 @@
+{
+  "name": "x",
+  "version": "1.0.0",
+  "description": "cross me",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erahulag/x.git"
+  },
+  "keywords": [
+    "cross",
+    "reference",
+    "match",
+    "anything",
+    "to",
+    "anything"
+  ],
+  "author": "Rahul Agarwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erahulag/x/issues"
+  },
+  "homepage": "https://github.com/erahulag/x"
+}
