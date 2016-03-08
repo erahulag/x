@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/erahulag/x/issues"
   },
-  "homepage": "https://github.com/erahulag/x"
+  "homepage": "https://github.com/erahulag/x",
+  "dependencies": {
+    "http": "0.0.0"
+  }
 }
