@@ -17,16 +17,34 @@ Of course, your expense report is much larger. Find the two entries that sum to 
 
 Your puzzle answer ?????
 */
-answer1=(inputs)=>{
-    const a={};
-    for(x=0;x<inputs.length;x++){
-     let num=inputs[x];
-     let n2020 = 2020-num;  
-     if(num>2020) continue;
-     if(a[num] === true){
-        return num*n2020}
-      else {a[n2020]=true;}
+const { parseIntegerList } = require("../utils");
+
+/**
+ * Parse input
+ * @param {string} content
+ * @returns {number[]}
+ */
+const input_parser = parseIntegerList;
+
+/**
+ * Solution for day1 / part1 problem
+ * @param {number[]} inputs
+ * @returns {number|string}
+ */
+
+function solution1(inputs) {
+  const a = {};
+  for (x = 0; x < inputs.length; x++) {
+    let num = inputs[x];
+    let n2020 = 2020 - num;
+    if (num > 2020) continue;
+    if (a[num] === true) {
+      return num * n2020;
+    } else {
+      a[n2020] = true;
     }
+  }
+  return null;
 }
 
 /**
@@ -40,14 +58,24 @@ In your expense report, what is the product of the three entries that sum to 202
 Your puzzle answer ??????
 */
 
-answer2=(inputs)=>{
- let inin={};
-for(x=0;x<inputs.length;x++){
-  for(y=x+1;y<inputs.length;y++){
-    if(inputs[x]+inputs[y]<2020 && !inin[ 2020 - inputs[x]-inputs[y]])
-     inin[ 2020 - inputs[x]-inputs[y]] = {a:inputs[x],b:inputs[y]};
-  }}
-  console.log(inin);
-  let num=inputs.find(i=>inin[i]);
-  if(num) return num*inin[num].a*inin[num].b
+function solution2(inputs) {
+  let inin = {};
+  for (x = 0; x < inputs.length; x++) {
+    for (y = x + 1; y < inputs.length; y++) {
+      if (inputs[x] + inputs[y] < 2020 && !inin[2020 - inputs[x] - inputs[y]])
+        inin[2020 - inputs[x] - inputs[y]] = { a: inputs[x], b: inputs[y] };
+    }
+  }
+  let num = inputs.find((i) => inin[i]);
+  if (num) {
+    return num * inin[num].a * inin[num].b;
+  }
+  return null;
 }
+
+function solution(input) {
+  // console.log(input);
+  return { part1: solution1(input), part2: solution2(input) };
+}
+
+module.exports = { input_parser, solution };

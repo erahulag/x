@@ -17,12 +17,26 @@ What is the sum of the fuel requirements for all of the modules on your spacecra
 
 Your puzzle answer 
 */
-function wgtt1(input){
-     
-    if(input.length<1) return 0;
-    let out=input.map(i=> i>6?(Math.floor(i/3)-2):0);
-    const fuel=out.reduce((a,o)=>a+o,0);
-    return fuel;
+const { parseIntegerList } = require("../utils");
+
+/**
+ * Parse input
+ * @param {string} content
+ * @returns {number[]}
+ */
+const input_parser = parseIntegerList;
+
+/**
+ * Solution for day1 / part1 problem
+ * @param {number[]} inputs
+ * @returns {number|string}
+ */
+
+function solution1(input) {
+  if (input.length < 1) return 0;
+  let out = input.map((i) => (i > 6 ? Math.floor(i / 3) - 2 : 0));
+  const fuel = out.reduce((a, o) => a + o, 0);
+  return fuel;
 }
 
 /**
@@ -41,11 +55,17 @@ What is the sum of the fuel requirements for all of the modules on your spacecra
 Your puzzle answer was
 */
 
-function wgtt(input){
-     
-    if(input.length<1) return 0;
-    let out=input.map(i=> i>6?(Math.floor(i/3)-2):0);
-    let newfuel = wgtt(out.filter(o=> o>6 ) )
-    const fuel=out.reduce((a,o)=>a+o,0);
-    return fuel+newfuel;
+function solution2(input) {
+  if (input.length < 1) return 0;
+  let out = input.map((i) => (i > 6 ? Math.floor(i / 3) - 2 : 0));
+  let newfuel = solution2(out.filter((o) => o > 6));
+  const fuel = out.reduce((a, o) => a + o, 0);
+  return fuel + newfuel;
 }
+
+function solution(input) {
+  // console.log(input);
+  return { part1: solution1(input), part2: solution2(input) };
+}
+
+module.exports = { input_parser, solution };
